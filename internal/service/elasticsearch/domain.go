@@ -233,9 +233,10 @@ func ResourceDomain() *schema.Resource {
 							Default:  1,
 						},
 						"instance_type": {
-							Type:     schema.TypeString,
-							Optional: true,
-							Default:  elasticsearch.ESPartitionInstanceTypeM3MediumElasticsearch,
+							Type:         schema.TypeString,
+							Optional:     true,
+							ValidateFunc: validation.StringInSlice(elasticsearch.ESPartitionInstanceType_Values(), false),
+							Default:      elasticsearch.ESPartitionInstanceTypeM3MediumElasticsearch,
 						},
 						"warm_count": {
 							Type:         schema.TypeInt,
